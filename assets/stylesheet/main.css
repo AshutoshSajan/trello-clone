@@ -59,7 +59,7 @@ button, input, .text-area {
 body {
 	background-color: gray;
 }
-.add-card {
+.add-List {
 	background-color: rgba(0,0,0,0.4);
 	display: inline-block;
 	font-size: 22px;
@@ -85,7 +85,8 @@ body {
 }
 
 .add-card,
-.addList,
+.add-List,
+.addList;
 .addCard {
 	color: #fff;
 	cursor: pointer;

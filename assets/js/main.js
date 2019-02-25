@@ -1,19 +1,21 @@
-var card = document.querySelector(".card-container");
-var board = document.querySelector(".board");
+var root = document.querySelector(".root");
 var mainInput;
+var primaryList;
 var html;
+var addList;
+var primaryBtn;
+var listContainer;
+var title;
+
 class Trello {
-	constructor(element, name, data){
-		// this.name = name;
-		// this.id = 0;
-		// this.element = element;
-		// this.listArray = [];
+	constructor(){
+		this.id = 0;
+		this.listArray = [];
 	}
 
-	static defaultList(){
-		card.innerHTML = `<span class="add-card"> + Add a list </span>`;
-		var primaryBtn = document.querySelector(".add-card");
-		primaryBtn.addEventListener("click", Trello.createCard);
+	defaultList(){
+		primaryList = `<span class="add-List" onClick="Trello.createCard()"> + Add a list </span>`;
+		root.innerHTML = primaryList;
 	}
 
 	static createCard(e){
@@ -21,45 +23,52 @@ class Trello {
 		`<div class="list-container">
 			<input class="main-input" type="text" />
 			<div class="list-footer">
-				<button class="addList">+ Add list</button>
+				<button class="addList" onClick="Trello.createList"> + Add list </button>
 				<span class="fas fa-times"></span>
 			</div>
-		</div>`;
-		card.innerHTML = html;
+		 </div>`;
+
+		root.innerHTML = html;
+		listContainer = document.querySelector(".list-container");
 		mainInput =  document.querySelector(".main-input");
-		mainInput.addEventListener("click", Trello.createList);
-		var addList = document.querySelector(".addList");
-		addList.addEventListener("click", Trello.createList);
-		// mainInput.focus();
-		// mainInput.addEventListener("blur", handleBlur);
+		window.addEventListener("keydown", Trello.handleEnter);
+		addList = document.querySelector(".addList");
+		// listContainer.addEventListener("click", Trello.createList);
+		// listContainer.addEventListener("click", Trello.createNewCard);
+	}
+
+	static handleEnter(e){
+		if(e.target.value.trim() && e.keyCode == 13){
+			title = document.createElement("div");
+			title.classList.add("card-title");
+			title.innerHTML = `<h2>${e.target.value}</h2> <span class="list-options">...</span>`;
+			title.innerText = e.target.value;
+			addList.classList.add("add-card");
+			addList.innerText = "+ Add a card";
+			e.target.parentNode.replaceChild(title, mainInput);
+			root.innerHTML += html;
+			e.target.value = "";
+		}
 	}
 
 	static createList(e){
-		if(mainInput.value.trim()){
-			// card.innerHTML = html;
-			var div = document.createElement("div");
-			// // div.classList.add("list-container");
-			div.innerHTML = card.innerHTML;
-			card.appendChild(div);
+		if(e.target.classList.contains("addList") && mainInput.value != ""){
+			console.log("hello");
+			root.innerHTML += html;
+			e.target.value = "";
 		}
-		
+	}
+
+	static createNewCard(e){
+		if(e.target.classList.contains("add-card")){
+			console.log("hello");
+			var div = document.createElement("div");
+			div.innerHTML = `<textarea name="" id="" cols="30" rows="10"></textarea>`;
+			e.target.parentNode.appendChild(div);
+		}	
 	}
 }
 
-function handleBlur(e){
-	Trello.defaultList();
-}
 
-Trello.defaultList();
-
-// class List {
-// 	constructor(element, name, data){
-
-// 	}
-// }
-
-// class Card {
-// 	constructor(element, name, data){
-
-// 	}
-// }
+var board = new Trello();
+board.defaultList();
