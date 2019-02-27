@@ -50,6 +50,10 @@ table {
 /*=======================================*/
 /*main css*/
 /*=======================================*/
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
 button, input, .text-area {
 	border: 0;
 	outline: 0;
@@ -57,67 +61,149 @@ button, input, .text-area {
 }
 
 body {
-	background-color: gray;
+	background: url(../media/bg.jpg);
 }
-.add-List {
-	background-color: rgba(0,0,0,0.4);
+.default-card {
+	width: 280px;
+	font-size: 20px;
+	padding: 10px;
+	background-color: rgba(0 ,0 ,0 , 0.2); 
+}
+
+/*========================*/
+/*header section*/
+/*========================*/
+.primary-header,
+.left-sec,
+.board-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.primary-header,
+.board-header {
+	padding: 10px 5px;
+	border-bottom: 1px solid rgba(0 ,0 ,0 , 0.1);
+	background-color: rgba(0 ,0 ,0 , 0.2);
+}
+
+.main-heading,
+.board-details,
+span {
 	display: inline-block;
-	font-size: 22px;
-	width: 277px;
-	padding: 5px;
-	border-radius: 3px;
+}
+.icon,
+.input-box {
+	padding: 6px;
+	margin: 0 2px;
+	font-size: 20px;
+	color: #fff;
+	border-radius: 4px;
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+.icon, .fa-search, .mid-sec {
 	cursor: pointer;
-	margin: 10px 5px 0 5px;
 }
 
-.list-container {
-	-webkit-transition:  all 2s ease-out;
-	display: inline-block;
-	padding: 8px;
-	border-radius: 3px;
-	margin: 0 8px 5px 0;
-	background-color: rgba(0,0,0,0.2);
+.main-search {
+	font-size: 20px;
+	width: 200px;
+	background-color: transparent;
+}
+.bell {
+	background-color:  dodgerblue;
 }
 
-.main-input {
-	padding: 4px 6px;
-	border: 1px solid dodgerblue; 
+.user-profile{
+	font-size: 20px;
+	padding: 6px 10px;
+	border-radius: 50%;
 }
 
-.add-card,
-.add-List,
-.addList;
-.addCard {
+.mid-sec {
+	color: rgb(242, 244, 244, 0.6);
+	font-size: 32px;
+	font-style: italic;
+	margin-right: 100px;
+}
+
+.board-header * {
 	color: #fff;
 	cursor: pointer;
 }
-
-.main-input,
-.fa-times,
-.addList,
-.card-title,
-.addCard {
-	font-size: 20px;
-}
-.card-title {
-	display: flex;
-	justify-content: space-between;
-	width: 277px;
-	padding: 4px 6px;
+.board-name {
+	font-size: 22px;
+	background-color: rgba(0, 0, 0, 0.4);
+	padding: 5px;
 }
 
-.addList,
-.addCard {
-	background-color: darkred;
-	padding: 5px 10px;
-	margin: 10px 4px 0 0;
+.personal, .private {
+	border-left: 1px solid #f3f3f3;
+	padding: 0 10px;
+}
+.fa-star {
+	padding: 0 10px;
 }
 
-.new-todo {
+.private {
+	border-right: 1px solid #f3f3f3;
+	margin-right: 10px;
+}
+
+.circle {
 	display: inline-block;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.2);
+	padding: 8px;
+	margin: 0 5px;
+}
+.one {
+	padding: 8px 10px;
 }
 
-.text-area {
+.menu-toggle {
+	font-size: 20px;
+	padding: 6px;
+}
+
+/*========================*/
+/*trello board section*/
+/*========================*/
+.root {
+	padding: 10px;
+}
+
+.default-card {
+	width: 280px;
 	font-size: 18px;
-	padding: 4px 6px;
+	padding: 10px;
+	color: #fff;
+	border-radius: 5px;
+	background-color: rgba(0 ,0 ,0 , 0.2); 
+}
+
+.listInput {
+	background-color: #f3f3f3;
+	padding: 10px;
+	display: inline-block;
+	border-radius: 5px;
+}
+
+.mainInput, .addBtn {
+	font-size: 18px;
+	padding: 5px 7px;
+}
+
+.mainInput {
+	width: 270px;
+}
+
+.listFooter {
+	padding-top: 10px;
+}
+
+.addBtn {
+	background-color: darkgreen;
+	color: #fff;
 }
