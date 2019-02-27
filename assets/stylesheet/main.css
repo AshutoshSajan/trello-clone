@@ -73,9 +73,12 @@ body {
 /*========================*/
 /*header section*/
 /*========================*/
+
+
 .primary-header,
 .left-sec,
-.board-header {
+.board-header,
+.title {
 	display: flex;
 	justify-content: space-between;
 }
@@ -172,6 +175,10 @@ span {
 /*========================*/
 .root {
 	padding: 10px;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	align-items: start;
+	grid-auto-flow: column;
 }
 
 .default-card {
@@ -184,18 +191,25 @@ span {
 }
 
 .listInput {
+	width: 290px;
 	background-color: #f3f3f3;
 	padding: 10px;
 	display: inline-block;
 	border-radius: 5px;
+	margin: 4px 8px;
 }
 
-.mainInput, .addBtn {
+.mainInput,
+.title,
+.addBtn,
+.add-card,
+.todo,
+.card-input {
 	font-size: 18px;
 	padding: 5px 7px;
 }
 
-.mainInput {
+.mainInput, .title, .card-input {
 	width: 270px;
 }
 
@@ -203,7 +217,19 @@ span {
 	padding-top: 10px;
 }
 
-.addBtn {
+.addBtn, .add-card {
 	background-color: darkgreen;
 	color: #fff;
+}
+
+.remove-list {
+	color: transparent;
+	transition: color 0.5s ease-in-out;
+}
+.title:hover .remove-list {
+	color: darkred;
+}
+
+.hide {
+	display: none;
 }
